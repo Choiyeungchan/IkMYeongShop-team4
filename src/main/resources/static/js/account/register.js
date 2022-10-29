@@ -4,19 +4,14 @@ const searchAdrbtn = document.querySelector(".btn_post_search");
 
 btnComfirm.onclick = () => {
     const accountInputs = document.querySelectorAll(".account-inputs");
-
+ 
     let user = {
         userName: accountInputs[0].value,
         password: accountInputs[1].value,
         passwordChk: accountInputs[2].value,
-        name: accountInputs[3].value,
-        email: accountInputs[4].value,
-        phone: accountInputs[5].value,
-        tel: accountInputs[6].value,
-        postcode: accountInputs[7].value,
-        address: accountInputs[8].value,
-        addresssub: accountInputs[9].value
+        name: accountInputs[3].value
     }
+    console.log(user);
 
     $.ajax({
         async: false,
@@ -35,6 +30,7 @@ btnComfirm.onclick = () => {
             loadErrorMassage(error.responseJSON.data);
         }
     });
+    
 }
 
 function loadErrorMassage(errors) {
@@ -45,7 +41,7 @@ function loadErrorMassage(errors) {
     errorMsgs.innerHTML = "";
 
     errorArray.forEach(error => {
-        errorMgs.innerHTML += `
+        errorMsgs.innerHTML += `
         <li>${error}</li>
         `;
     });
