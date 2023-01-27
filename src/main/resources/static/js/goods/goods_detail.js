@@ -54,15 +54,11 @@ class ProductDetail {
             productImages.innerHTML = `
             <div class="item_photo">
                 <img src="/static/upload/product/${img}" alt="">
-                <div class="slick-list.draggable">
-                    <div class="mini_img">
-                        <img class="img_cl" src="/static/upload/product/${img}" alt="cup">
-                    </div>
-                </div>
             </div>
             `;
         })
     }
+    //upload/product/${img}
 
     loadProductDetail(responseData) {
         document.querySelector(".goods-title").textContent = responseData.pdtName;
