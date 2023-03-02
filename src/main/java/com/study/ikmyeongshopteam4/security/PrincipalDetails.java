@@ -1,18 +1,28 @@
 package com.study.ikmyeongshopteam4.security;
 
 import com.study.ikmyeongshopteam4.domain.User;
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Map;
+
+@Data
 
 public class PrincipalDetails implements UserDetails {
 
     private User user;
+    private Map<String, Object> attributes;
 
     public PrincipalDetails(User user) {
         this.user = user;
+    }
+
+    public PrincipalDetails(User user, Map<String, Object> attributes) {
+        this.user = user;
+        this.attributes = attributes;
     }
 
     @Override
