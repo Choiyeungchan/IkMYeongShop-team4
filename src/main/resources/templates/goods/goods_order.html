@@ -101,18 +101,19 @@
                                         <tbody>
                                         <tr>
                                             <td class="td_left">
-                                                <input type="hidden" name="cartSno[]" value="257980">
+                                                <input type="hidden" name="cartSno[]" value="">
                                                 <div class="pick_add_cont">
                                                     <span class="pick_add_img">
                                                         <a href="../goods/goods_view.php?goodsNo=1000000486"><img th:src="|/static/upload/product/${data.saveName}|" class="middle"></a>
                                                     </span>
                                                     <div class="pick_add_info">
-                                                        <em class="product-name" th:text="${data.pdtName}"></em>
-            
+                                                        <div class="product-name" th:text="${data.pdtName}">
+                                                            <em class="product-name"></em>
+                                                        </div>
                                                         <!-- //icon_pick_list -->
             
-                                                        <div class="pick_option_box">
-                                                            <span class="text_type_cont" th:text="${data.pdtDesign}"></span>
+                                                        <div class="pick_option_box" th:text="${data.pdtDesign}">
+                                                            <span class="text_type_cont" ></span>
                                                         </div>
             
                                                         <div class="pick_option_box">

@@ -11,4 +11,5 @@ public class CheckoutRespDto {
     private String pdtName;
     private int pdtPrice;
     private String pdtDesign;
+    private String saveName;
 }

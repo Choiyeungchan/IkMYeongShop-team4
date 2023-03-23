@@ -27,7 +27,7 @@ class ImportApi {
         IMP.request_pay({
             pg: "kakaopay",
             pay_method: "card",
-            merchant_uid: "PRODUCT_" + new Date().getTime(),
+            merchant_uid: "GOODS-" + new Date().getTime(),
             name: pdtName,
             amount: pdtPrice,
             buyer_email: email,
