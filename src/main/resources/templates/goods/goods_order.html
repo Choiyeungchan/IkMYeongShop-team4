@@ -108,7 +108,7 @@
                                                     </span>
                                                     <div class="pick_add_info">
                                                         <div class="product-name" th:text="${data.pdtName}">
-                                                            <em class="product-name"></em>
+                                                            <em></em>
                                                         </div>
                                                         <!-- //icon_pick_list -->
             
@@ -131,13 +131,13 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <strong class="order_sum_txt price product-price" th:text="${data.pdtPrice}"></strong>
+                                                <strong class="order_sum_txt product-price" th:text="${data.pdtPrice}"></strong>
                                             </td>
                                             <td class="td_benefit">
                                                 <ul class="benefit_list">
                                                     <li class="benefit_mileage js_mileage">
                                                         <em>적립</em>
-                                                        <span>상품 <strong>+250원</strong></span>
+                                                        <span><strong class="mileage">원</strong></span>
                                                     </li>
                                                 </ul>
                                             </td>
@@ -171,7 +171,7 @@
                                     <div class="price_sum_list">
                                         <dl>
                                             <dt>총 <strong>1</strong> 개의 상품금액 </dt>
-                                            <dd><strong>25,000</strong>원</dd>
+                                            <dd><strong class="pdtPrice" value="${data.pdtPrice}" th:text="${data.pdtPrice}"></strong>원</dd>
                                         </dl>
                                         <span class="price-font1">+</span>
                                         <dl>
@@ -181,11 +181,11 @@
                                         <span class="price-font1">=</span>
                                         <dl class="price_total">
                                             <dt>합계</dt>
-                                            <dd><strong>27,500</strong>원
+                                            <dd><strong class="totalPay"></strong>원
                                             </dd>
                                         </dl>
                                     </div>
-                                    <em class="tobe_mileage js_mileage">적립예정 마일리지 : <span>250</span> 원</em>
+                                    <em class="tobe_mileage js_mileage">적립예정 마일리지 : <span class="mileage"></span> 원</em>
                                 </div>
                                 <!-- //price_sum_cont -->
                             </div>
@@ -208,8 +208,8 @@
                                             </colgroup>
                                             <tbody>
                                                 <tr>
-                                                    <th scope="row"><span class="important">주문하시는 분</span></th>
-                                                    <td><input type="text" class="principal-name" name="orderName" value="" data-pattern="gdEngKor" maxlength="20"></td>
+                                                    <th scope="row"><span>주문하시는 분</span></th>
+                                                    <td th:text="|${user.name}"><input type="text"name="orderName" data-pattern="gdEngKor" maxlength="20"></td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">전화번호</th>
@@ -218,15 +218,9 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row"><span class="important">휴대폰 번호</span></th>
-                                                    <td>
-                                                        <input type="text" id="mobileNum" name="orderCellPhone" value="" maxlength="20">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row"><span class="important">이메일</span></th>
+                                                    <th scope="row"><span>이메일</span></th>
                                                     <td class="member_email">
-                                                        <input type="text" class="principal-email" name="orderEmail" value="">
+                                                        <input type="text" class="principal-email" name="orderEmail">
                 
                                                         <select id="emailDomain" class="chosen-select">
                                                             <option value="self">직접입력</option>
@@ -259,20 +253,19 @@
                                             </colgroup>
                                             <tbody>
                                             <tr>
-                                                <th scope="row"><span class="important">받으실분</span></th>
-                                                <td><input type="text" name="receiverName" data-pattern="gdEngKor" maxlength="20"></td>
+                                                <th scope="row"><span>받으실분</span></th>
+                                                <td><input type="text" class="principal-name important"  name="receiverName" data-pattern="gdEngKor" maxlength="20" required></td>
                                             </tr>
                                             <tr>
-                                                <th scope="row"><span class="important">받으실 곳</span></th>
+                                                <th scope="row"><span>받으실 곳</span></th>
                                                 <td class="member_address">
                                                     <div class="address_postcode">
-                                                        <input type="text" class="address-zonecode" name="receiverZonecode" readonly="readonly" disabled>
-                                                        <input type="hidden" name="receiverZipcode">
+                                                        <input type="text" class="address-zonecode important" name="receiverZonecode" readonly="readonly" required>
                                                         <span id="receiverZipcodeText" class="old_post_code"></span>
                                                         <button type="button" class="btn_post_search">우편번호검색</button>
                                                     </div>
                                                     <div class="address_input">
-                                                        <input type="text" class="address-all" name="receiverAddress" readonly="readonly" disabled>
+                                                        <input type="text" class="address-all important" name="receiverAddress" readonly="readonly" required>
                                                         <input type="text" class="address-detail"  name="receiverAddressSub">
                                                     </div>
                                                 </td>
@@ -283,35 +276,10 @@
                                                     <input type="text" class="phone-number" id="receiverPhone" name="receiverPhone">
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <th scope="row"><span class="important">휴대폰 번호</span></th>
-                                                <td>
-                                                    <input type="text" id="receiverCellPhone" name="receiverCellPhone">
-                                                </td>
-                                            </tr>
-                                            <!-- <tr id="memberinfoApplyTr">
-                                                <th scope="row">회원정보 반영</th>
-                                                <td>
-                                                    <div class="form_element">
-                                                        <div id="memberinfoApplyTr1" class="member_info_delivery">
-                                                            <input type="checkbox" id="reflectApplyDelivery" name="reflectApplyDelivery" value="y">
-                                                            <label for="reflectApplyDelivery" class="check_s"><em>나의 배송지에 추가합니다.</em></label>
-                                                        </div>
-                                                        <div id="memberinfoApplyTr2" class="member_info_apply">
-                                                            <input type="checkbox" id="reflectApplyMember" name="reflectApplyMember" value="y">
-                                                            <label for="reflectApplyMember" class="check_s">위 내용을 회원정보에 반영합니다. <span>(주소/전화번호/휴대폰번호)</span></label>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr> -->
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
-                                <!-- //delivery_info -->
-            
-                                <!-- //addition_info -->
-            
                                 <div class="payment_info">
                                     <div class="order_zone_tit">
                                         <h4>결제정보</h4>
@@ -327,22 +295,19 @@
                                                 <tr>
                                                    <th scope="row">상품 합계 금액</th>
                                                    <td>
-                                                       <strong id="totalGoodsPrice" class="order_payment_sum">25,000원</strong>
+                                                       <strong id="totalGoodsPrice" class="order_payment_sum pdtPrice" value="${data.pdtPrice}" th:text="${data.pdtPrice}"></strong>원
                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">배송비</th>
                                                     <td>
-                                                            <span id="totalDeliveryCharge">2,500</span>원
+                                                            <span id="totalDeliveryCharge"><strong>2,500</strong></span>원
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">최종 결제 금액</th>
                                                     <td>
-                                                        <input type="hidden" name="settlePrice" value="27500">
-                                                        <input type="hidden" name="overseasSettlePrice" value="0">
-                                                        <input type="hidden" name="overseasSettleCurrency" value="KRW">
-                                                        <strong id="totalSettlePrice" class="order_payment_sum">27,500</strong>원
+                                                        <strong id="totalSettlePrice" class="order_payment_sum totalPay"></strong>원
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -359,7 +324,7 @@
                                         <div class="payment_final_total">
                                             <dl>
                                                 <dt>최종 결제 금액</dt>
-                                                <dd><span><strong id="totalSettlePriceView">27,500</strong>원</span></dd>
+                                                <dd><span><strong id="totalSettlePriceView"  class="totalPay"></strong>원</span></dd>
                                             </dl>
                                         </div>
                                         <div class="payment_final_check">
@@ -369,7 +334,7 @@
                                             </div>
                                         </div>
                                         <div class="btn_center_box">
-                                            <button class="btn_order_buy order-buy"><em>결제하기</em></button>
+                                            <button type="button" class="btn_order_buy order-buy"><em>결제하기</em></button>
                                         </div>
                                     </div>
                                     <!-- //payment_final -->
@@ -389,5 +354,6 @@
     </div>
     <script src="/static/js/order/address.js"></script>
     <script src="/static/js/order/product_order.js"></script>
+    <script src="/static/js/order/checkoutprice.js"></script>
 </body>
 </html>

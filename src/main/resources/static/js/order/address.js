@@ -1,3 +1,4 @@
+
 class AddressApi {
     static #instance = null;
     static getInstance() {
